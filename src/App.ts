@@ -1118,7 +1118,7 @@ export default class App<AppCustomContext extends StringIndexed = StringIndexed>
             );
           });
 
-          const settledListenerResults = await allSettled(listenerResults);
+          const settledListenerResults = await Promise.allSettled(listenerResults);
           const rejectedListenerResults = settledListenerResults.filter(
             (lr) => lr.status === 'rejected',
           ) as allSettled.PromiseRejection<Error>[];
